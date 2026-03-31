@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { Moon, Sun, PenLine, Brain, StretchHorizontal, Footprints, Beef, Flame, Dumbbell, Star, Trophy, ChevronDown, ChevronUp, X, Plus, Sparkles, Zap, Target, TrendingUp, Check } from "lucide-react";
+import { Moon, Sun, PenLine, Brain, StretchHorizontal, Footprints, Beef, Flame, Dumbbell, Star, Trophy, ChevronDown, ChevronUp, X, Plus, Sparkles, Zap, Target, TrendingUp, Check, ArrowRight } from "lucide-react";
 
 // ═══════════════════════════════════════════════════
 // DAILYXP — LIFE IS MORE FUN AS A VIDEO GAME
@@ -148,6 +148,7 @@ export default function DailyXP() {
   const [perfectFlash, setPerfectFlash] = useState(false);
   const [editQ, setEditQ] = useState(null);
   const [newQ, setNewQ] = useState({ label: "", points: 1 });
+  const [nameInput, setNameInput] = useState("");
   const [intro, setIntro] = useState(true);
   const [introPhase, setIntroPhase] = useState(0); // 0=waiting, 1=logo, 2=tagline, 3=fadeout
   const [fontsReady, setFontsReady] = useState(false);
@@ -175,7 +176,7 @@ export default function DailyXP() {
   const makeInit = () => ({
     quests: DEFAULT_QUESTS, days: {},
     weekHigh: 0, allTimeHigh: 0, totalXP: 0,
-    hsCelebratedWeek: null,
+    hsCelebratedWeek: null, name: "",
   });
 
   const load = () => {
@@ -236,6 +237,54 @@ export default function DailyXP() {
       </div>
       {/* Tagline */}
       <p style={{ fontFamily: "'Outfit',sans-serif", fontSize: 12, fontWeight: 300, letterSpacing: 4, color: P.text3, marginTop: 16, opacity: introPhase >= 2 && introPhase < 3 ? 1 : 0, transform: introPhase >= 2 ? "translateY(0)" : "translateY(12px)", transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)" }}>LIFE IS MORE FUN AS A VIDEO GAME</p>
+    </div>
+  );
+
+  // Name onboarding for new players
+  if (!data.name) return (
+    <div style={{ background: P.void, height: "100dvh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "0 32px", animation: "fadeUp 0.5s ease both" }}>
+      <div style={{ position: "fixed", inset: 0, pointerEvents: "none", overflow: "hidden" }}>
+        <div style={{ position: "absolute", borderRadius: "50%", filter: "blur(80px)", width: 400, height: 400, top: "-10%", left: "-5%", background: `radial-gradient(circle,${P.indigo} 0%,transparent 70%)`, opacity: 0.12 }} />
+        <div style={{ position: "absolute", borderRadius: "50%", filter: "blur(80px)", width: 300, height: 300, bottom: "10%", right: "-5%", background: `radial-gradient(circle,${P.gold}44 0%,transparent 70%)`, opacity: 0.2 }} />
+      </div>
+      <div style={{ position: "relative", zIndex: 2, textAlign: "center", maxWidth: 320, width: "100%" }}>
+        <div style={{ fontFamily: "'Syne',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 4, color: P.text3, marginBottom: 8, textTransform: "uppercase" }}>New Player</div>
+        <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: 28, fontWeight: 800, color: P.text1, margin: "0 0 6px", lineHeight: 1.2 }}>What's your name?</h2>
+        <p style={{ fontFamily: "'Outfit',sans-serif", fontSize: 13, fontWeight: 300, color: P.text3, margin: "0 0 32px", letterSpacing: 1 }}>every legend starts somewhere</p>
+        <form onSubmit={e => { e.preventDefault(); if (nameInput.trim()) save({ ...data, name: nameInput.trim() }); }} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          <input
+            autoFocus
+            placeholder="enter your name..."
+            value={nameInput}
+            onChange={e => setNameInput(e.target.value)}
+            maxLength={20}
+            style={{
+              width: "100%", background: P.surface, border: `1px solid ${P.border}`,
+              borderRadius: 14, padding: "16px 18px", color: P.text1,
+              fontFamily: "'Outfit',sans-serif", fontSize: 16, fontWeight: 500,
+              outline: "none", textAlign: "center", letterSpacing: 1,
+              transition: "border-color 0.25s ease",
+            }}
+            onFocus={e => e.target.style.borderColor = P.borderActive}
+            onBlur={e => e.target.style.borderColor = P.border}
+          />
+          <button
+            type="submit"
+            disabled={!nameInput.trim()}
+            style={{
+              display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+              background: nameInput.trim() ? `linear-gradient(135deg, rgba(232,168,56,0.12), rgba(255,200,87,0.08))` : P.surface,
+              border: `1px solid ${nameInput.trim() ? "rgba(232,168,56,0.3)" : P.border}`,
+              borderRadius: 14, padding: 16, cursor: nameInput.trim() ? "pointer" : "default",
+              color: nameInput.trim() ? P.gold : P.text3,
+              fontFamily: "'Outfit',sans-serif", fontSize: 15, fontWeight: 600,
+              transition: "all 0.3s ease", letterSpacing: 1,
+            }}
+          >
+            Start Playing <ArrowRight size={16} strokeWidth={2} />
+          </button>
+        </form>
+      </div>
     </div>
   );
 
@@ -301,7 +350,9 @@ export default function DailyXP() {
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 24, marginBottom: 6 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <span style={{ width: 8, height: 8, borderRadius: "50%", background: level.col, display: "inline-block", boxShadow: `0 0 8px ${level.col}44` }} />
-            <span style={{ fontFamily: "'Syne',sans-serif", fontSize: 12, fontWeight: 700, letterSpacing: 2, color: P.text1 }}>{level.name}</span>
+            <span style={{ fontFamily: "'Syne',sans-serif", fontSize: 12, fontWeight: 700, letterSpacing: 2, color: level.col }}>{level.name}</span>
+            <span style={{ fontFamily: "'Outfit',sans-serif", fontSize: 12, fontWeight: 500, color: P.text2 }}>{data.name}</span>
+            <span style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 11, color: P.text3 }}>·</span>
             <span style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 11, color: P.text2 }}>{data.totalXP} xp</span>
           </div>
           {streak > 0 && (
