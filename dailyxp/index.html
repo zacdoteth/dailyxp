@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="DAILYXP" />
+    <meta name="theme-color" content="#050509" />
+    <meta name="description" content="DAILYXP — life is more fun as a video game. Track daily quests, beat your weekly high score, level up." />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- OG Tags -->
+    <meta property="og:title" content="DAILYXP" />
+    <meta property="og:description" content="Life is more fun as a video game. Track daily quests, beat your weekly high score, level up." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dailyxp.app" />
+    <meta property="og:image" content="https://dailyxpgame.vercel.app/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="DAILYXP — life is more fun as a video game" />
+    <meta property="og:site_name" content="DAILYXP" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="DAILYXP" />
+    <meta name="twitter:description" content="Life is more fun as a video game." />
+    <meta name="twitter:image" content="https://dailyxpgame.vercel.app/og.png" />
+
+    <title>DAILYXP</title>
+    <!-- Preload fonts - start downloading before JS boots -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" />
+    <style>
+      html, body, #root {
+        margin: 0;
+        padding: 0;
+        background: #050509;
+        min-height: 100dvh;
+        overflow-x: hidden;
+      }
+      *::-webkit-scrollbar { display: none; }
+      * { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

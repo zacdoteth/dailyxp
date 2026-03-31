@@ -1,0 +1,16 @@
+{
+  "name": "DAILYXP",
+  "short_name": "DAILYXP",
+  "description": "Life is more fun as a video game.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050509",
+  "theme_color": "#050509",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
