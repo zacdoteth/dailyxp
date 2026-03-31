@@ -1,8 +1,13 @@
 {
   "name": "dailyxp",
-  "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Gamified daily routine tracker. Life is more fun as a video game.",
   "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zacdoteth/dailyxp.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
