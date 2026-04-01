@@ -77,7 +77,7 @@ Or connect the repo to Vercel — it auto-deploys on push.
 
 ## Inspiration
 
-Based on [@seyong](https://x.com/seyong)'s framework for treating life like a video game:
+Based on [@seyong](https://x.com/seyong)'s [framework](https://x.com/seyong/status/2038990639782621347) for treating life like a video game:
 
 > *there are ~5-10 things that dictate how well my day goes. i assign "points" to each of these things. decision fatigue is real, and your brain is wired to make excuses that "make sense." i either do or i dont.*
 
