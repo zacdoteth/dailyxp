@@ -81,7 +81,11 @@ Or connect the repo to Vercel — it auto-deploys on push.
 
 Based on [@seyong](https://x.com/seyong)'s [framework](https://x.com/seyong/status/2038990639782621347) for treating life like a video game:
 
-> *there are ~5-10 things that dictate how well my day goes. i assign "points" to each of these things. decision fatigue is real, and your brain is wired to make excuses that "make sense." i either do or i dont.*
+> *there are ~5-10 things that dictate how well my day goes. i assign "points" to each of these things, for a total of 10 points each day. decision fatigue is real, and your brain is wired to make excuses that "make sense." i either do or i dont.*
+>
+> *my favorite part is tallying points up each week, and keeping track like a new high score to beat. i reassess where my holes are, and how i can do better.*
+>
+> *life is more fun as a video game.*
 
 ## License
 
