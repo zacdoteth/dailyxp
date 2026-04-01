@@ -68,7 +68,10 @@ const LEVELS = [
   { name: "GOD MODE", min: 2500, col: "#fff" },
 ];
 
-const getToday = () => new Date().toISOString().split("T")[0];
+const getToday = () => {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+};
 const getWeekId = (ds) => {
   const d = new Date(ds + "T12:00:00");
   const day = d.getDay();
