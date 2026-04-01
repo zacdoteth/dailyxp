@@ -10,10 +10,6 @@
   Zero backend. Zero accounts. Just you vs. yesterday.
 </p>
 
-<p align="center">
-  <a href="https://dailyxp.app"><strong>dailyxp.app</strong></a>
-</p>
-
 ---
 
 ## How it works
